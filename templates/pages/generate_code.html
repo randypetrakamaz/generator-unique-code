@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %} Generate Code {% endblock %}
+
+{% block content %}
+    {{ super() }}
+
+    <div class="card my-3">
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col col-md-8">
+                    <h5 class="card-title mb-4">Form Generated Code</h5>
+                    <!-- form -->
+                    <form id="form1">
+                        <div class="row mb-4">
+                            <div class="col col-md-4">
+                                <label for="brand" class="form-label">Brand</label>
+                                <select class="form-select" id="brand" name="brand">
+                                    <option value="" selected disabled>Select brand...</option>
+                                    <option value="djoy">Djoy</option>
+                                    <option value="dway">Dway</option>
+                                </select>
+                            </div>
+                            <div class="col col-md-4">
+                                <label for="model" class="form-label">Model Type</label>
+                                <select class="form-select" id="model" name="model">
+                                    <option value="" selected disabled>Select model type...</option>
+                                    <option value="os">Open System</option>
+                                    <option value="cs">Closed System</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button id="generate_btn" type="button" class="btn btn-primary  ">Generate</button>
+
+                        <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                    
+                    </form>
+                </div>
+                <div class="col col-md-4">
+                    <h5 class="card-title mb-4">Hasil Unique Code</h5>
+                    <h1 id="hasil" class="mb-5"></h1>                    
+                </div>
+            </div> 
+        </div>
+    </div>
+{% endblock %}
