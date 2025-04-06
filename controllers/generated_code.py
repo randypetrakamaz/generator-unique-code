@@ -1,20 +1,12 @@
-from flask import Flask, render_template, redirect, url_for, request, jsonify
+from flask import Blueprint, render_template, request, jsonify
 import random
 import string
-from models.UniqueCodes import UniqueCodes
 
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return render_template('pages/generate_code.html')
-
-@app.route('/test/')
-def test():
-    return render_template('test.html')
+# Membuat Blueprint untuk 'main'
+bp_main = Blueprint('main', __name__)
 
 
-@app.route('/generate-code', methods=['POST'])
+@bp_main.route('/generate-code', methods=['POST'])
 def generate_unique_code():
     brand = request.form.get('brand')
     model = request.form.get('model')
@@ -41,17 +33,4 @@ def generate_unique_code():
         # if code not in generated_codes:
         #     generated_codes.add(code)
         #     return code
-
-
-
-
-
-@app.route('/test-db/')
-def testdb():
-    codes = UniqueCodes.get_all_codes()
-    return jsonify(codes)
-
-
-if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=True)
 
